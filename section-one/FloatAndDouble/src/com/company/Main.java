@@ -24,9 +24,9 @@ public class Main {
         System.out.println("My Float Value = " +myFloatValue);
         System.out.println("My Double Value = " +myDoubleValue);
 
-        double numInput = 185.37;
+        double numInput = 185.37d;
         double pound = numInput;
-        double kilo = pound * .45359237;
+        double kilo = pound * .45359237d;
 
         System.out.println(kilo);
 
