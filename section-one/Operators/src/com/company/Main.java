@@ -79,8 +79,26 @@ public class Main {
         }
 
         boolean isCar = false;
-        if (!isCar) {
+        if (isCar) {
             System.out.println("Should print");
+        }
+
+        isCar = true;
+        boolean wasCar = isCar ? true : false;
+        if(wasCar) {
+            System.out.println("Was car is True");
+        }
+
+        double firstNumber = 20.00d;
+        double secondNumber = 80.00d;
+        double thirdNumber = (firstNumber + secondNumber) * 100.00d;
+        double remainder = thirdNumber % 40.00d;
+
+        boolean isNoRemainder = (remainder == 0) ? true : false;
+        System.out.println(isNoRemainder);
+
+        if(!isNoRemainder) {
+            System.out.println("Have some remainder");
         }
 
     }
