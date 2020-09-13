@@ -52,7 +52,36 @@ public class Main {
         result -= 2; // 10 - 2 = 8
         System.out.println("10 - 2 = " + result);
 
+        boolean isAlien = false;
 
+        if(isAlien == false) {
+            System.out.println("It isn't an Alien");
+            System.out.println("ALIEN!!!");
+        }
+
+        int topScore = 99;
+        if(topScore < 100) {
+            System.out.println("High Score!!");
+        }
+
+        int secondTopScore = 60;
+        if ((topScore > secondTopScore) && (topScore < 100)) {
+            System.out.println("Greater than Second Top Score and less than 100");
+        }
+
+        if ((topScore > 90) || (secondTopScore < 50)) {
+            System.out.println("Or Operator operating");
+        }
+
+        int newValue = 50;
+        if (newValue == 50) {
+            System.out.println("Success!");
+        }
+
+        boolean isCar = false;
+        if (!isCar) {
+            System.out.println("Should print");
+        }
 
     }
 }
