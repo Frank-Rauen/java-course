@@ -9,5 +9,7 @@ public class Main {
                 4,1,20,"Silky");
 
         dog.eat();
+        dog.walk();
+        dog.run();
     }
 }
