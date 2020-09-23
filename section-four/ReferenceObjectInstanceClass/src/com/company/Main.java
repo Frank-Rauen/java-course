@@ -9,3 +9,4 @@
 
 //Reference
 //References the location but doesn't create a new instance
+//Parameters to constructors and methods
