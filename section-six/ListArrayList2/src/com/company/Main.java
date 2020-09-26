@@ -1,6 +1,7 @@
 package com.company;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -39,6 +40,9 @@ public class Main {
                 case 6:
                     quit = true;
                     break;
+                case 7:
+                    processArrayList();
+                    break;
             }
         }
     }
@@ -51,6 +55,7 @@ public class Main {
         System.out.println("\t 4 = To remove an item from the list");
         System.out.println("\t 5 = To search for an item in the list");
         System.out.println("\t 6 = To quit the application");
+        System.out.println("\t 7 = Get entire array list");
     }
 
     public static void addItem() {
@@ -80,5 +85,15 @@ public class Main {
         } else {
             System.out.println(searchItem + " is not in grocery list");
         }
+    }
+
+    public static void processArrayList() {
+        ArrayList<String> newArray = new ArrayList<>();
+        newArray.addAll(groceryList.getGroceryList());
+
+        ArrayList<String> nextArray = new ArrayList<String>(groceryList.getGroceryList());
+
+        String[] myArray = new String[groceryList.getGroceryList().size()];
+        myArray = groceryList.getGroceryList().toArray(myArray);
     }
 }
