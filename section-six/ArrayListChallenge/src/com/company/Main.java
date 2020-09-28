@@ -100,16 +100,9 @@ public class Main {
         if (existingContactRecord == null) {
             System.out.println("Contact not found");
             return;
-        }
-
-        System.out.println("Name: " + existingContactRecord.getName() + " phone number is " + existingContactRecord.getPhoneNumber());
-
-        if(cellPhone.removeContact(existingContactRecord)) {
-            System.out.println("Delete successful");
         } else {
-            System.out.println("Error deleting contact");
+            System.out.println("Name: " + existingContactRecord.getName() + " phone number is " + existingContactRecord.getPhoneNumber());
         }
-
     }
 
     private static void startPhone() {
