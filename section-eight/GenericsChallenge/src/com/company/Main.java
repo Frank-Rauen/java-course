@@ -16,7 +16,7 @@ public class Main {
         footballLeague.add(jets);
         footballLeague.add(giants);
 
-        
+
 
 
 
