@@ -12,6 +12,7 @@ public class Main {
         System.out.println(varFour);
         ScopeCheck.InnerClass innerClass = scopeInstance.new InnerClass();
         innerClass.timesTwo();
+        scopeInstance.useInner();
 
 
 
