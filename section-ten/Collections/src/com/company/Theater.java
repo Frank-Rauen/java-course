@@ -4,8 +4,8 @@ package com.company;
 import java.util.*;
 
 public class Theater {
-    private final String name;
-    private List<Seat> seats = new ArrayList<>();
+    public final String name;
+    public List<Seat> seats = new ArrayList<>();
 
     public Theater(String name, int numRows, int seatsPerRow) {
         this.name = name;
@@ -50,7 +50,7 @@ public class Theater {
         }
     }
 
-    private class Seat implements Comparable<Seat>{
+    public class Seat implements Comparable<Seat>{
         private final String seatNumber;
         private boolean reserved = false;
 
