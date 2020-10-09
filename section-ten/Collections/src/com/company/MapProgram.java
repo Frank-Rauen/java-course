@@ -23,6 +23,21 @@ public class MapProgram {
 
         System.out.println(languages.get("Java"));
 
+        System.out.println("=====================");
+
+//        languages.remove("Ruby");
+        if(languages.remove("SQL", "Structure Query Language")) {
+            System.out.println("Language removed");
+        } else {
+            System.out.println("no language");
+        }
+
+        languages.replace("Ruby", "Still ugh");
+
+        for(String key : languages.keySet()) {
+            System.out.println(key + " : " + languages.get(key));
+        }
+
 
 
 
