@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Created by dev on 3/02/2016.
+ */
 public class SetMain {
     public static void main(String[] args) {
         Set<Integer> squares = new HashSet<>();
@@ -14,21 +17,20 @@ public class SetMain {
             cubes.add(i * i * i);
         }
 
-        System.out.println(squares.size());
-        System.out.println(cubes.size());
+        System.out.println("There are " + squares.size() + " squares and " + cubes.size() + " cubes.");
         Set<Integer> union = new HashSet<>(squares);
         union.addAll(cubes);
-        System.out.println(union.size());
+        System.out.println("Union contains " + union.size() + "  elements.");
 
         Set<Integer> intersection = new HashSet<>(squares);
         intersection.retainAll(cubes);
-        System.out.println(intersection.size());
+        System.out.println("Intersection contains " + intersection.size() + " elements.");
         for (int i : intersection) {
-            System.out.println(i + " is a square of " + Math.sqrt(i) + " and cube of " + Math.cbrt(i));
+            System.out.println(i + " is the square of " + Math.sqrt(i) + " and the cube of " + Math.cbrt(i));
         }
 
         Set<String> words = new HashSet<>();
-        String sentence = "One Day in the year of the fox";
+        String sentence = "one day in the year of the fox";
         String[] arrayWords = sentence.split(" ");
         words.addAll(Arrays.asList(arrayWords));
 
@@ -38,19 +40,18 @@ public class SetMain {
 
         Set<String> nature = new HashSet<>();
         Set<String> divine = new HashSet<>();
+        String[] natureWords = {"all", "nature", "is", "but", "art", "unknown", "to", "thee"};
+        nature.addAll(Arrays.asList(natureWords));
 
-        String[] arrayNatureWords = {"all", "nature", "is", "but", "art", "unknown", "to", "thee"};
-        nature.addAll(Arrays.asList(arrayNatureWords));
+        String[] divineWords = {"to", "err", "is", "human", "to", "forgive", "divine"};
+        divine.addAll(Arrays.asList(divineWords));
 
-        String[] arrayDivineWords = {"to", "err", "is", "human", "to", "forgive", "divine"};
-        nature.addAll(Arrays.asList(arrayDivineWords));
-
-        System.out.println("nature - divine: ");
+        System.out.println("nature - divine:");
         Set<String> diff1 = new HashSet<>(nature);
         diff1.removeAll(divine);
         printSet(diff1);
 
-        System.out.println("divine - nature: ");
+        System.out.println("divine - nature:");
         Set<String> diff2 = new HashSet<>(divine);
         diff2.removeAll(nature);
         printSet(diff2);
@@ -65,24 +66,35 @@ public class SetMain {
         printSet(unionTest);
 
         if(nature.containsAll(divine)) {
-            System.out.println("Divine is a subset of nature");
+            System.out.println("divine is a subset of nature");
         }
 
         if(nature.containsAll(intersectionTest)) {
-            System.out.println("Intersection is a subset of nature");
+            System.out.println("intersection is  subset of nature");
         }
 
         if(divine.containsAll(intersectionTest)) {
-            System.out.println("Intersection is a subset of divine");
+            System.out.println("intersection is a subset of divine");
         }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
-        private static void printSet(Set<String> set) {
-            System.out.println("\t");
-            for(String s: set) {
-                System.out.println(s + " ");
-            }
-            System.out.println();
+    private static void printSet(Set<String> set) {
+        System.out.print("\t");
+        for(String s : set) {
+            System.out.print(s + " ");
         }
-
+        System.out.println();
+    }
 }

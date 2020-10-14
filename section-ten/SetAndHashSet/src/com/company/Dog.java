@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Created by dev on 17/01/2016.
+ */
 public class Dog {
     private final String name;
 
@@ -12,7 +15,7 @@ public class Dog {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public final boolean equals(Object obj) {
         if(this == obj) {
             return true;
         }
@@ -20,7 +23,6 @@ public class Dog {
         if(obj instanceof Dog) {
             String objName = ((Dog) obj).getName();
             return this.name.equals(objName);
-
         }
 
         return false;

@@ -1,6 +1,10 @@
 package com.company;
 
+/**
+ * Created by dev on 17/01/2016.
+ */
 public class Labrador extends Dog {
+
     public Labrador(String name) {
         super(name);
     }
@@ -14,7 +18,6 @@ public class Labrador extends Dog {
 //        if(obj instanceof Labrador) {
 //            String objName = ((Labrador) obj).getName();
 //            return this.getName().equals(objName);
-//
 //        }
 //
 //        return false;
