@@ -7,7 +7,7 @@ public class Main {
         StockItem temp = new StockItem("Bread", 1.29, 100);
         stockList.addStock(temp);
 
-        temp = new StockItem("Cake", 15.15, 20);
+        temp = new StockItem("Cake", 15.15, 28);
         stockList.addStock(temp);
 
         temp = new StockItem("Beer", 10.15, 200);
@@ -27,5 +27,7 @@ public class Main {
 
         temp = new StockItem("Milk", 3.14, 200);
         stockList.addStock(temp);
+
+        System.out.println(stockList);
     }
 }
