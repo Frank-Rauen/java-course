@@ -39,6 +39,7 @@ public class Main {
         }
 
         Basket frankBasket = new Basket("Frank");
+
         sellItem(frankBasket, "Milk", 1);
         System.out.println(frankBasket);
 
@@ -47,9 +48,24 @@ public class Main {
 
         sellItem(frankBasket, "Milk", 7);
         sellItem(frankBasket, "Cigs", 20);
-        System.out.println(frankBasket);
+//        System.out.println(frankBasket);
+
+//        System.out.println(stockList);
+
+        Basket basket = new Basket("Customer");
+        sellItem(basket, "Milk", 10);
+        sellItem(basket, "Lint Roller", 1);
+        sellItem(basket, "Toy", 1);
+
+        System.out.println(basket);
+
+        removeItem(basket,"Milk", 5);
 
         System.out.println(stockList);
+
+        checkout(basket);
+
+
 
 //        temp = new StockItem("Pen", 2.12);
 //        stockList.Items().put(temp.getName(), temp);
@@ -68,11 +84,30 @@ public class Main {
             System.out.println("Item not available.");
             return 0;
         }
-        if(stockList.sellStock(item, quantity) != 0) {
-            basket.addToBasket(stockItem, quantity);
-            return quantity;
+        if(stockList.reserveStock(item, quantity) != 0) {
+            return basket.addToBasket(stockItem, quantity);
         }
         return 0;
+    }
+
+    public static int removeItem(Basket basket, String item, int quantity) {
+        StockItem stockItem = stockList.get(item);
+        if(stockItem == null) {
+            System.out.println("Item not available.");
+            return 0;
+        }
+        if(basket.removeFromBasket(stockItem, quantity) == quantity) {
+
+            return stockList.unreserveStock(item, quantity);
+        }
+        return 0;
+    }
+
+    public static void checkout(Basket basket) {
+        for(Map.Entry<StockItem, Integer> item : basket.Items().entrySet()) {
+            stockList.sellStock(item.getKey().getName(), item.getValue());
+        }
+        basket.clearBasket();
     }
 
 }
