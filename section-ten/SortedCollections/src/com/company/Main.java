@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Map;
+
 public class Main {
     private static StockList stockList = new StockList();
 
@@ -48,6 +50,17 @@ public class Main {
         System.out.println(frankBasket);
 
         System.out.println(stockList);
+
+//        temp = new StockItem("Pen", 2.12);
+//        stockList.Items().put(temp.getName(), temp);
+
+        stockList.Items().get("Bread").adjustStock(15000);
+        stockList.Items().get("Bread").adjustStock(-15099);
+        System.out.println(stockList);
+
+        for(Map.Entry<String, Double> price: stockList.priceList().entrySet()) {
+            System.out.println(price.getKey() + " costs " + price.getValue());
+        }
     }
     public static int sellItem(Basket basket, String item, int quantity) {
         StockItem stockItem = stockList.get(item);
