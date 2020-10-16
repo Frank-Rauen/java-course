@@ -18,6 +18,8 @@ public class Main {
 
         temp = new StockItem("Candy", 5.50, 400);
         stockList.addStock(temp);
+        temp = new StockItem("Candy", 5.25, 300);
+        stockList.addStock(temp);
 
         temp = new StockItem("Lint Roller", 8.00, 5);
         stockList.addStock(temp);
@@ -30,8 +32,34 @@ public class Main {
 
         System.out.println(stockList);
 
-        for(String s : stockList.Items().keySet()) {
+        for (String s : stockList.Items().keySet()) {
             System.out.println(s);
         }
+
+        Basket frankBasket = new Basket("Frank");
+        sellItem(frankBasket, "Milk", 1);
+        System.out.println(frankBasket);
+
+        sellItem(frankBasket, "Candy", 5);
+        System.out.println(frankBasket);
+
+        sellItem(frankBasket, "Milk", 7);
+        sellItem(frankBasket, "Cigs", 20);
+        System.out.println(frankBasket);
+
+        System.out.println(stockList);
     }
+    public static int sellItem(Basket basket, String item, int quantity) {
+        StockItem stockItem = stockList.get(item);
+        if(stockItem == null) {
+            System.out.println("Item not available.");
+            return 0;
+        }
+        if(stockList.sellStock(item, quantity) != 0) {
+            basket.addToBasket(stockItem, quantity);
+            return quantity;
+        }
+        return 0;
+    }
+
 }
