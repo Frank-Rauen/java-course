@@ -29,5 +29,9 @@ public class Main {
         stockList.addStock(temp);
 
         System.out.println(stockList);
+
+        for(String s : stockList.Items().keySet()) {
+            System.out.println(s);
+        }
     }
 }
