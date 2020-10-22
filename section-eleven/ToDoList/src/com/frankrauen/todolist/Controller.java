@@ -48,6 +48,8 @@ public class Controller {
     public void showNewItemDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
+        dialog.setTitle("Add New ToDo Item");
+        dialog.setHeaderText("Enter New ToDo Item Here: ");
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("toDoItemDialog.fxml"));
         try {
@@ -65,7 +67,10 @@ public class Controller {
         Optional<ButtonType> result = dialog.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK) {
             DialogController controller = fxmlLoader.getController();
-            controller.processResults();
+            ToDoItem newItem = controller.processResults();
+            todoListView.getItems().setAll(ToDoData.getInstance().getToDoItems());
+            todoListView.getSelectionModel().select(newItem);
+
             System.out.println("OK pressed");
         } else {
             System.out.println("Cancel Pressed");
