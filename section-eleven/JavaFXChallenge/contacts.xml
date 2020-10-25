@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+<contact>
+	<first_name>Slade</first_name>
+	<last_name>Webb</last_name>
+	<phone_number>1234567890</phone_number>
+	<notes>New Name</notes>
+</contact>
+<contact>
+	<first_name>Frank</first_name>
+	<last_name>Rauen</last_name>
+	<phone_number>123456</phone_number>
+	<notes>K</notes>
+</contact>
+</contacts>
