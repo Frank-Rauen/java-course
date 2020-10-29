@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.*;
 import java.util.*;
+import java.lang.Integer;
 
 public class Locations implements Map<Integer, Location> {
     private static Map<Integer, Location> locations = new LinkedHashMap<Integer, Location>();
