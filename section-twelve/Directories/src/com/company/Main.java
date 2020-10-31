@@ -20,8 +20,8 @@ public class Main {
         Path directory = FileSystems.getDefault().getPath("FileTree" + File.separator + "Dir2");
 
 
-        try(DirectoryStream<Path> contents = Files.newDirectoryStream(directory, filter)) {
-            for(Path file: contents) {
+        try (DirectoryStream<Path> contents = Files.newDirectoryStream(directory, filter)) {
+            for (Path file : contents) {
                 System.out.println(file.getFileName());
             }
         } catch (IOException | DirectoryIteratorException e) {
@@ -34,21 +34,68 @@ public class Main {
         System.out.println(separator);
 
         try {
-            Path tempFile = Files.createTempFile("myapp",".appext");
+            Path tempFile = Files.createTempFile("myapp", ".appext");
             System.out.println("Temp File Path = " + tempFile.toAbsolutePath());
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
         Iterable<FileStore> stores = FileSystems.getDefault().getFileStores();
-        for(FileStore store: stores) {
+        for (FileStore store : stores) {
             System.out.println("Volume name/Drive Letter = " + store);
-            System.out.println("File Store = "+store.name());
+            System.out.println("File Store = " + store.name());
         }
         System.out.println("***********************");
         Iterable<Path> rootPaths = FileSystems.getDefault().getRootDirectories();
-        for(Path path : rootPaths) {
+        for (Path path : rootPaths) {
             System.out.println(path);
+        }
+
+        System.out.println("**********Walking Tree for Dir2************");
+        Path dir2Path = FileSystems.getDefault().getPath("FileTree" + File.separator + "Dir2");
+        try {
+            Files.walkFileTree(dir2Path, new PrintNames());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("*********Copy Dir2 to Dir4/Dir2Copy*********");
+        Path copyPath = FileSystems.getDefault().getPath("FileTree" + File.separator + "Dir4" + File.separator + "Dir2Copy");
+        try {
+            Files.walkFileTree(dir2Path, new CopyFiles(dir2Path, copyPath));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        File file = new File("/Examples/file.txt");
+        Path convertedPath = file.toPath();
+        System.out.println("convertedPath = " + convertedPath);
+
+        File parent = new File("/Examples");
+        File resolvedFile = new File(parent, "dir/file.txt");
+        System.out.println(resolvedFile.toPath());
+
+        resolvedFile = new File("/Examples", "dir/file.txt");
+        System.out.println(resolvedFile.toPath());
+
+        Path parentPath = Paths.get("/Examples");
+        Path childRelativePath = Paths.get("dir/file.txt");
+        System.out.println(parentPath.resolve(childRelativePath));
+
+        File workingDirectory = new File("").getAbsoluteFile();
+        System.out.println("Working Directory = " + workingDirectory.getAbsolutePath());
+
+        System.out.println("**********Print Dir2 contents using list()*********");
+        File dir2File = new File(workingDirectory,"/FileTree/Dir2");
+        String[] dir2Contents = dir2File.list();
+        for(int i =0; i < dir2Contents.length; i++) {
+            System.out.println("i = " + i + ": " + dir2Contents[i]);
+        }
+
+        System.out.println("**********Print Dir2 contents using listFiles()*********");
+        File[] dir2Files = dir2File.listFiles();
+        for(int i =0; i < dir2Files.length; i++) {
+            System.out.println("i = " + i + ": " + dir2Files[i].getName());
         }
     }
 }
