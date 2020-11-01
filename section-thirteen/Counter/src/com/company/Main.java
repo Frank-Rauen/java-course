@@ -38,7 +38,6 @@ class Countdown {
                 System.out.println(color + Thread.currentThread().getName() + ": i = " + i );
             }
         }
-
     }
 }
 
