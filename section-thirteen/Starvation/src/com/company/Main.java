@@ -1,10 +1,12 @@
 package com.company;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Main {
-    private static Object lock = new Object();
+    private static ReentrantLock lock = new ReentrantLock(true);
 
     public static void main(String[] args) {
-	    Thread t1 = new Thread(new Worker(ThreadColor.ANSI_RED), "Priority 10");
+        Thread t1 = new Thread(new Worker(ThreadColor.ANSI_RED), "Priority 10");
         Thread t2 = new Thread(new Worker(ThreadColor.ANSI_BLUE), "Priority 8");
         Thread t3 = new Thread(new Worker(ThreadColor.ANSI_GREEN), "Priority 6");
         Thread t4 = new Thread(new Worker(ThreadColor.ANSI_CYAN), "Priority 4");
@@ -23,7 +25,6 @@ public class Main {
         t2.start();
 
 
-
     }
 
     private static class Worker implements Runnable {
@@ -36,9 +37,12 @@ public class Main {
 
         @Override
         public void run() {
-            for(int i = 0; i < 100; i++) {
-                synchronized (lock) {
+            for (int i = 0; i < 100; i++) {
+                lock.lock();
+                try {
                     System.out.format(threadColor + "%s: runCount = %d\n", Thread.currentThread().getName(), runCount++);
+                } finally {
+                    lock.unlock();
                 }
             }
         }
