@@ -8,16 +8,16 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	    new Thread(() -> {
-        System.out.println("Printing from runnable");
-        System.out.println("Line 2");
-        System.out.format("This is line %d\n", 3);
-	    }).start();
+//	    new Thread(() -> {
+//        System.out.println("Printing from runnable");
+//        System.out.println("Line 2");
+//        System.out.format("This is line %d\n", 3);
+//	    }).start();
 
-	    Employee john = new Employee("John Doe", 30);
-	    Employee frank = new Employee("Frank Rauen", 27);
-	    Employee anne = new Employee("Anne Rice", 60);
-	    Employee dave = new Employee("Dave Smith", 18);
+        Employee john = new Employee("John Doe", 30);
+        Employee frank = new Employee("Frank Rauen", 27);
+        Employee anne = new Employee("Anne Rice", 60);
+        Employee dave = new Employee("Dave Smith", 18);
 
         List<Employee> employees = new ArrayList<>();
         employees.add(john);
@@ -25,14 +25,17 @@ public class Main {
         employees.add(anne);
         employees.add(dave);
 
-        Collections.sort(employees, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee employee1, Employee employee2) {
-                return employee1.getName().compareTo(employee2.getName());
-            }
-        });
+//        Collections.sort(employees, new Comparator<Employee>() {
+//            @Override
+//            public int compare(Employee employee1, Employee employee2) {
+//                return employee1.getName().compareTo(employee2.getName());
+//            }
+//        });
 
-        for(Employee employee : employees) {
+        Collections.sort(employees, (employee1, employee2) ->
+                employee1.getName().compareTo(employee2.getName()));
+
+        for (Employee employee : employees) {
             System.out.println(employee.getName());
         }
 
